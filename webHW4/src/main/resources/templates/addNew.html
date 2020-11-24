@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>addNew</title>
+    <link rel="stylesheet" href="../static/addNew/addNew.css">
+    <script src="../static/addNew/addNew.js"></script>
+</head>
+<body>
+<div class="main">
+    <div>
+        <h1>添加新联系人</h1>
+    </div>
+    <form action="/checkadd" th:object="${conInfo}" method="post">
+        <div class="form-content">
+            <label>姓名</label>
+            <input class="form-content-input" id="input-name" th:field="*{name}" type="text" name="name" pattern="[\u4e00-\u9fa5a-zA-Z]{2,}" oninput="check(input-name)" required>
+            <td id="name-valid">中文或英文</td>
+        </div>
+        <div class="form-content">
+            <label>电话</label>
+            <input class="form-content-input" id="input-tel" th:field="*{tel}" type="text" name="phone" pattern="[0-9]*" oninput="check(input-name)" required>
+            <td id="tel-valid">数字</td>
+        </div>
+        <div class="form-content">
+            <label>邮箱</label>
+            <input class="form-content-input" id="input-email" th:field="*{email}" type="text" name="email" pattern=".+@.+" oninput="check(input-name)">
+            <td id="email-valid">邮箱格式</td>
+        </div>
+        <div class="form-content">
+            <label>住址</label>
+            <input class="form-content-input" id="input-address" th:field="*{address}" type="text" name="address" oninput="check(input-name)" pattern=".+">
+            <td id="address-valid">任意格式</td>
+        </div>
+        <div class="form-content">
+            <label>QQ号</label>
+            <input class="form-content-input" id="input-qq" th:field="*{qq}" type="text" name="qq" oninput="check(input-name)" pattern="[0-9]{5,10}">
+            <td id="qq-valid">5-10位数字</td>
+        </div>
+        <input class="submit-btn" type="submit" value="保存">
+    </form>
+</div>
+</body>
+</html>
