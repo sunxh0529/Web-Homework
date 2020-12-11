@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>table</title>
+    <link rel="stylesheet" href="../static/main/tableStyle.css"/>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.5.1.min.js"></script>
+    <script src="../static/main/mainjs.js"></script>
+</head>
+<body>
+<div class="body">
+    <form>
+        <div>
+            <label>用户</label>
+            <input class="form-control" name="prefix">
+            <input class="form-control" type="submit" value="Search">
+        </div>
+    </form>
+    <button class="add-btn" onclick="add()">添加</button>
+    <table>
+        <thead>
+        <tr>
+            <td>姓名</td>
+            <td>电话</td>
+            <td>邮箱</td>
+            <td>住址</td>
+            <td>QQ号</td>
+            <td>操作</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="info:${table.getTableinfo()}">
+            <td th:text="${info.getContactname()}"></td>
+            <td th:text="${info.getTel()}"></td>
+            <td th:text="${info.getEmail()}"></td>
+            <td th:text="${info.getAddr()}"></td>
+            <td th:text="${info.getQq()}"></td>
+            <td class="operation">
+                <button class="edit-btn" onclick="edit(this)">编辑</button>
+                <button class="delete-btn" onclick="del(this)">删除</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
